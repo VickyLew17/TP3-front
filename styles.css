@@ -1,0 +1,36 @@
+h1{
+    font-size: 3.2rem;
+    text-align: center;
+}
+
+input{
+    width: 90%;
+     
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#contenedor-libros {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+#contenedor-libros article {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px #ddd;
+}
+
+#contenedor-libros img {
+   width: 160px;
+   height: 250px;
+}
+
+#contenedor-libros h2 {
+    font-size: 1.2rem;
+}
