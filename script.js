@@ -2,7 +2,9 @@ let libros = [];
 
 let generoSeleccionado = "todos";
 
-fetch("https://openlibrary.org/search.json?q=books&limit=1500&fields=key,title,author_name,cover_i,subject")          // Ruta al archivo JSON
+let favoritos = [];
+
+fetch("https://openlibrary.org/search.json?q=books&limit=200&fields=key,title,author_name,cover_i,subject")          // Ruta al archivo JSON
   .then(response => response.json())  // Convertir la respuesta en JSON
   .then(data => {                     // Aquí tienes acceso al JSON en formato de objeto JS
     console.log('Libros cargados');
@@ -32,7 +34,23 @@ function mostrarLibros(lista) {
             <img src="${`https://covers.openlibrary.org/b/id/${libro.cover_i}-M.jpg`}" alt="Portada de ${libro.title}">
             <h2>${libro.title}</h2>
             <p>Autor: ${libro.author_name ? libro.author_name.join(", ") : "Desconocido"}</p>
+            <button class="btn-favorito">♡</button>
         `;
+
+      let botonFavorito = tarjeta.querySelector(".btn-favorito");
+
+      botonFavorito.addEventListener("click", () => {
+
+        if (favoritos.includes(libro)) {
+          favoritos = favoritos.filter(favorito => favorito != libro);
+          botonFavorito.textContent = "♡";
+        }
+
+        else {
+          favoritos.push(libro);
+          botonFavorito.textContent = "♥";
+        }
+      })
 
     contenedor.appendChild(tarjeta);
   });

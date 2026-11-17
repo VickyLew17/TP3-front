@@ -96,3 +96,12 @@ h1 {
     font-size: 0.9rem;
     color: #776b68;
 }
+
+.btn-favorito {
+    background: none;
+    border: none;
+    color: #b66b7c;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
