@@ -105,3 +105,14 @@ h1 {
     cursor: pointer;
     margin-top: 10px;
 }
+
+#btn-favoritos {
+    background-color: #713f4b;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+

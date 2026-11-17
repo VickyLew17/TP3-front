@@ -34,25 +34,34 @@ function mostrarLibros(lista) {
             <img src="${`https://covers.openlibrary.org/b/id/${libro.cover_i}-M.jpg`}" alt="Portada de ${libro.title}">
             <h2>${libro.title}</h2>
             <p>Autor: ${libro.author_name ? libro.author_name.join(", ") : "Desconocido"}</p>
-            <button class="btn-favorito">♡</button>
-        `;
-
-      let botonFavorito = tarjeta.querySelector(".btn-favorito");
-
-      botonFavorito.addEventListener("click", () => {
-
-        if (favoritos.includes(libro)) {
-          favoritos = favoritos.filter(favorito => favorito != libro);
-          botonFavorito.textContent = "♡";
-        }
-
-        else {
-          favoritos.push(libro);
-          botonFavorito.textContent = "♥";
-        }
-      })
-
+            <button class="btn-favorito">
+              ${favoritos.includes(libro) ? "♥" : "♡"}
+            </button>       
+      `;
+      
     contenedor.appendChild(tarjeta);
+
+
+    let botonFavorito = tarjeta.querySelector(".btn-favorito");
+
+    botonFavorito.addEventListener("click", () => {
+
+      if (favoritos.includes(libro)) {
+        favoritos = favoritos.filter(favorito => favorito !== libro);
+        botonFavorito.textContent = "♡";
+      }
+
+      else {
+        favoritos.push(libro);
+        botonFavorito.textContent = "♥";
+      }
+
+      if (botonFavoritos.textContent === "← Salir de favoritos") {
+        mostrarMisFavoritos();
+    }
+    })
+
+   
   });
 }
 
@@ -94,3 +103,36 @@ document.querySelectorAll(".btn-genero").forEach(boton => {
     filtrar()
   })
 })
+
+function mostrarFavoritos() {
+  const librosFavoritos = libros.filter(libro =>
+    favoritos.includes(libro)
+  )
+
+  mostrarLibros(librosFavoritos);
+}
+
+const botonFavoritos = document.getElementById("btn-favoritos");
+
+botonFavoritos.addEventListener("click", () => {
+  if (botonFavoritos.textContent === "♡ Mis favoritos") {
+    mostrarFavoritos();
+    botonFavoritos.textContent = "Salir de favoritos";
+  }
+
+  else {
+    mostrarTodos();
+    botonFavoritos.textContent = "♡ Mis favoritos";
+  }
+});
+
+function mostrarTodos() {
+  mostrarLibros(libros);
+}
+
+
+
+
+function mostrarFicha(libro) {
+
+}

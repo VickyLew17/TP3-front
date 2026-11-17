@@ -14,6 +14,9 @@
         <h1>Biblioteca</h1>
 
         <input type="search" id="busqueda" placeholder="Busca un libro...">
+
+        <button id="btn-favoritos">♡ Mis favoritos</button>
+
     </header>
 
 
@@ -24,12 +27,29 @@
         <button class="btn-genero" data-genero="thriller">Misterio</button>
         <button class="btn-genero" data-genero="historic">Histórico</button>
         <button class="btn-genero" data-genero="adventure">Aventura</button>
-
     </nav>
+
 
 
     <section id="contenedor-libros">
         <!--ACA TIENEN QUE IR LOS LIBROSSSSS-->
+
+        <div id="popup-libro">
+            <div class="contenido-popup">
+                <button id="cerrar-popup">cerrar</button>
+
+                <img id="popup-portada" src="" alt="">
+
+                <div>
+                    <h2 id="popup-titulo"></h2>
+                    <p id="popup-autor"></p>
+                    <p id="popup-anio"></p>
+                    <p id="popup-generos"></p>
+                </div>
+            </div>
+        </div>
+
+
     </section>
 
     <script src="script.js"></script>
